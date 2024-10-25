@@ -1,0 +1,67 @@
+$var1: red;
+$primary-color: white;
+@import "mixins";
+.text {
+  color: $var1;
+  font-size: 20px;
+}
+textarea,h1{
+    @extend .text
+}
+
+
+.button {
+@include mixin1(3px, solid, yellow);
+  
+}
+
+
+.btn {
+  background-color: $primary-color;
+  border-radius: 5px;
+  @if lightness($primary-color) >50% {
+    color: black;
+  } @else {
+    color: white;
+  }
+}
+
+$langages:"HTML5","CSS3","JAVA","React";
+
+h1{
+font-size: 6rem*2;
+color: #15DEA5;
+font-family: Arial;
+}
+$border-color: red;
+.item {
+border: 2px solid $border-color;
+}
+
+$white: #fff;
+$blue: #0097e6;
+$text-color: #192a56;
+@function background($text-color) {
+@if ($text-color == $white) {
+@return $blue;
+} @else {
+@return $white;
+}}
+.button {
+color: $text-color;
+
+background-color: background($text-color);
+
+}
+
+.btn-1 {
+margin: 5px;
+border-radius: 2px;
+}
+.btn-2{
+@extend .btn-1;
+background-color: green;
+}
+.btn-3{
+@extend .btn-2;
+}
